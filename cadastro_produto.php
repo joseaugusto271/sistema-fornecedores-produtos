@@ -4,6 +4,10 @@ include('valida_sessao.php');
 // Inclui o arquivo de conexão com o banco de dados
 include('conexao.php');
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Função para redimensionar e salvar a imagem
 function redimensionarESalvarImagem($arquivo, $largura = 80, $altura = 80) {
     $diretorio_destino = "img/";
@@ -77,6 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $descricao = $_POST['descricao'];
     $preco = str_replace(',', '.', $_POST['preco']); // Converte vírgula para ponto
+    $tipo = $_POST['tipo'];
+    $validade = $_POST['validade'];
 
     // Processa o upload da imagem
     $imagem = "";
@@ -92,8 +98,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Prepara a query SQL para inserção ou atualização
     if ($id) {
         // Se o ID existe, é uma atualização
-        $sql = "UPDATE produtos SET fornecedor_id=?, nome=?, descricao=?, preco=?";
-        $params = [$fornecedor_id, $nome, $descricao, $preco];
+        $sql = "UPDATE produtos SET fornecedor_id=?, nome=?, descricao=?, preco=?, tipo=?, validade=?";
+        $params = [$fornecedor_id, $nome, $descricao, $preco, $tipo, $validade];
         if($imagem) {
             $sql .= ", imagem=?";
             $params[] = $imagem;
@@ -105,9 +111,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mensagem = "Produto atualizado com sucesso!";
     } else {
         // Se não há ID, é uma nova inserção
-        $sql = "INSERT INTO produtos (fornecedor_id, nome, descricao, preco, imagem) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO produtos (fornecedor_id, nome, descricao, preco, tipo, validade, imagem) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("issss", $fornecedor_id, $nome, $descricao, $preco, $imagem);
+        $stmt->bind_param("issssss", $fornecedor_id, $nome, $descricao, $preco, $tipo, $validade, $imagem);
         $mensagem = "Produto cadastrado com sucesso!";
     }
 
@@ -186,7 +192,7 @@ $fornecedores = $conn->query("SELECT id, nome FROM fornecedores");
             <input type="text" name="preco" value="<?php echo $produto['preco'] ?? ''; ?>" required>
 
             <label for="tipo">Tipo do produto: </label>
-            <select name="tipo" required>
+            <select name="tipo" value="<?php echo $tipo['tipo'] ?? ''; ?>" required>
                 <option value=""></option>
                 <option value="manutencao">Manutenção</option>
                 <option value="alimentacao">Alimentação</option>
@@ -196,7 +202,7 @@ $fornecedores = $conn->query("SELECT id, nome FROM fornecedores");
             </select>
 
             <label for="validade">Data de validade:</label>
-            <input type="date" name="validade" required>
+            <input type="date" name="validade" value="<?php echo $validade['preco'] ?? ''; ?>" required>
             
             <label for="imagem">Imagem:</label>
             <input type="file" name="imagem" accept="image/*">
@@ -237,30 +243,31 @@ $fornecedores = $conn->query("SELECT id, nome FROM fornecedores");
                     <td><?php echo 'R$ ' . number_format($row['preco'], 2, ',', '.'); ?></td>
                     <td><?php echo $row['tipo']; ?></td>
                     <td>
-                    <?php
-                    $raw = $row['validade']; // valor vindo do banco, ex: "2025-11-30" ou "0000-00-00" ou NULL
+                        <?php
+                        $raw = $row['validade']; // valor vindo do banco, ex: "2025-11-30" ou "0000-00-00" ou NULL
 
-                    if (!empty($raw) && $raw !== '0000-00-00') {
-                        $dt = DateTime::createFromFormat('Y-m-d', $raw);
-                        // checa se a criação deu certo e se a data é válida
-                        if ($dt && $dt->format('Y-m-d') === $raw) {
-                            echo $dt->format('d/m/Y');
+                        if (!empty($raw) && $raw !== '0000-00-00') {
+                            $dt = DateTime::createFromFormat('Y-m-d', $raw);
+                            // checa se a criação deu certo e se a data é válida
+                            if ($dt && $dt->format('Y-m-d') === $raw) {
+                                echo $dt->format('d/m/Y');
+                            } else {
+                                echo "—";
+                            }
                         } else {
                             echo "—";
                         }
-                    } else {
-                        echo "—";
-                    }
-                    ?>
+                        ?>
                     </td>
-
                     <td><?php echo $row['fornecedor_nome']; ?></td>
+                    <td>
                         <?php if ($row['imagem']): ?>
                             <img src="<?php echo $row['imagem']; ?>" alt="Imagem do produto" class="thumbnail">
                         <?php else: ?>
                             Sem imagem
                         <?php endif; ?>
                     </td>
+
                     <td>
                         <a href="?edit_id=<?php echo $row['id']; ?>">Editar</a>
                         <a href="?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
