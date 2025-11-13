@@ -7,33 +7,45 @@
 
 /* Definindo variáveis para cores e fontes */
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2c3e50;
-    --background-color: #ecf0f1;
-    --text-color: #333;
+    --primary-color: #2D9CDB;
+    --secondary-color: #2076d2;
+    --background-color: linear-gradient(to bottom, white, #008A99);
+    --text-color: #0d3055;
     --error-color: #e74c3c;
-    --success-color: #2ecc71;
+    --success-color: #3cb462;
     --font-family: 'Roboto', sans-serif;
+}
+
+html {
+    height: 100vh;
+    min-height: 100vh;
 }
 
 /* Estilos globais */
 body {
     font-family: var(--font-family);
-    background-color: var(--background-color);
+    min-height: 100%;
     color: var(--text-color);
     line-height: 1.6;
+    margin: 0;
+    background-image: var(--background-color);
+    background-attachment: fixed;
 }
 
 .container {
-    max-width: 1200px;
+    width: 900px;
+    height: 95vh;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 }
 
 /* Estilos para cabeçalhos */
-h2 {
-    color: var(--secondary-color);
-    margin-bottom: 20px;
+h1 {
+    font-size: 40px;
+}
+
+h1, h2 {
+    color: var(--text-color);
     text-align: center;
 }
 
@@ -86,7 +98,7 @@ button:hover {
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -147,28 +159,80 @@ a:hover {
 }
 
 /* Estilos para o menu principal */
+.header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: stretch;
+    /* width: 100%; */
+    padding: 20px;
+}
+
+.container-menu {
+    display: flex;
+    width: 100%;
+    height: 86vh;
+    justify-content: center;
+}
+
 .menu {
+    flex-wrap: wrap;
+    align-content: space-evenly;
     list-style-type: none;
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .menu li {
     margin: 0 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bolder;
 }
 
 .menu a {
-    display: block;
+    display: flex;
     padding: 10px 20px;
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text-color);
+    border: 1px solid rgba(51, 51, 51, 0.2);
     border-radius: 4px;
     transition: background-color 0.3s;
 }
 
 .menu a:hover {
+    background-color: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+}
+
+.cadastro {
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+}
+
+.logout {
+    padding: 10px 20px;
     background-color: #2980b9;
+    color: white;
+    border: 1px solid rgba(51, 51, 51, 0.2);
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    flex-grow: 0;
+    width: 100px;
+    height: 50px;
+    text-align: center;
+}
+
+.logout:hover {
+    background-color: #20618b;
+    color: white;
 }
 
 /* Estilos para ações na tabela */
@@ -192,7 +256,6 @@ a:hover {
 /* Estilo para o botão de voltar */
 .back-button {
     display: inline-block;
-    margin-top: 20px;
     padding: 10px 20px;
     background-color: var(--secondary-color);
     color: #fff;
@@ -205,6 +268,7 @@ a:hover {
 }
 
 /* Estilos para ações na tabela */
+
 table td a {
     display: inline-block;
     padding: 5px 10px;
@@ -234,8 +298,12 @@ table td a:last-child:hover {
 /* Estilos responsivos */
 
 @media (max-width: 768px) {
+    h1 {
+        font-size: 32px;
+    }
+
     .container {
-        padding: 10px;
+        padding: 10px 10px 0 10px;
     }
 
     table {
@@ -244,13 +312,5 @@ table td a:last-child:hover {
 
     th, td {
         padding: 8px;
-    }
-
-    .menu {
-        flex-direction: column;
-    }
-
-    .menu li {
-        margin: 5px 0;
     }
 }

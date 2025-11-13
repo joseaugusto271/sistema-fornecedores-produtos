@@ -144,7 +144,7 @@ if (isset($_GET['edit_id'])) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container" style="width: 900px;">
+    <div class="container" style="max-width: 900px;">
         <h2>Cadastro de Fornecedor</h2>
         <!-- Formulário para cadastro/edição de fornecedor -->
         <form method="post" action="" enctype="multipart/form-data">
