@@ -30,7 +30,4 @@ CREATE TABLE IF NOT EXISTS produtos (
 );
 
 -- Expressão SQL para cadastrar um usuário
-INSERT INTO usuarios (usuario, senha) VALUES ('Ignacio', MD5('123'));
-INSERT INTO usuarios (usuario, senha) VALUES ('Valmir', MD5('123'));
-INSERT INTO usuarios (usuario, senha) VALUES ('Nadja', MD5('123'));
-INSERT INTO usuarios (usuario, senha) VALUES ('Denis', MD5('123'));
+INSERT INTO usuarios (usuario, senha) VALUES ('usuário', MD5('123'));

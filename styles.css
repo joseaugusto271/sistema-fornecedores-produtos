@@ -219,8 +219,16 @@ a:hover {
     align-items: center;
     width: 300px;
     height: 300px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(0, 138, 153, 0.5) 70%);
 }
 
+.cadastro:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15);
+    transition: 0.1s;
+}
+
+/* Botão de sair */
 .logout {
     padding: 10px 20px;
     background-color: #2980b9;
