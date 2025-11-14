@@ -220,62 +220,62 @@ $fornecedores = $conn->query("SELECT id, nome FROM fornecedores");
 
         <h2>Listagem de Produtos</h2>
         <!-- Tabela para listar os produtos cadastrados -->
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Preço</th>
-                    <th>Tipo</th>
-                    <th>Validade</th>
-                    <th>Fornecedor</th>
-                    <th>Imagem</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $produtos->fetch_assoc()): ?>
-                <tr>
-                    <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['nome']; ?></td>
-                    <td><?php echo $row['descricao']; ?></td>
-                    <td><?php echo 'R$ ' . number_format($row['preco'], 2, ',', '.'); ?></td>
-                    <td><?php echo $row['tipo']; ?></td>
-                    <td>
-                        <?php
-                        $raw = $row['validade']; // valor vindo do banco, ex: "2025-11-30" ou "0000-00-00" ou NULL
-
-                        if (!empty($raw) && $raw !== '0000-00-00') {
-                            $dt = DateTime::createFromFormat('Y-m-d', $raw);
-                            // checa se a criação deu certo e se a data é válida
-                            if ($dt && $dt->format('Y-m-d') === $raw) {
-                                echo $dt->format('d/m/Y');
+        <div class="scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                        <th>Tipo</th>
+                        <th>Validade</th>
+                        <th>Fornecedor</th>
+                        <th>Imagem</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($row = $produtos->fetch_assoc()): ?>
+                    <tr>
+                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $row['nome']; ?></td>
+                        <td><?php echo $row['descricao']; ?></td>
+                        <td><?php echo 'R$ ' . number_format($row['preco'], 2, ',', '.'); ?></td>
+                        <td><?php echo $row['tipo']; ?></td>
+                        <td>
+                            <?php
+                            $raw = $row['validade']; // valor vindo do banco, ex: "2025-11-30" ou "0000-00-00" ou NULL
+                            if (!empty($raw) && $raw !== '0000-00-00') {
+                                $dt = DateTime::createFromFormat('Y-m-d', $raw);
+                                // checa se a criação deu certo e se a data é válida
+                                if ($dt && $dt->format('Y-m-d') === $raw) {
+                                    echo $dt->format('d/m/Y');
+                                } else {
+                                    echo "—";
+                                }
                             } else {
                                 echo "—";
                             }
-                        } else {
-                            echo "—";
-                        }
-                        ?>
-                    </td>
-                    <td><?php echo $row['fornecedor_nome']; ?></td>
-                    <td>
-                        <?php if ($row['imagem']): ?>
-                            <img src="<?php echo $row['imagem']; ?>" alt="Imagem do produto" class="thumbnail">
-                        <?php else: ?>
-                            Sem imagem
-                        <?php endif; ?>
-                    </td>
-
-                    <td>
-                        <a href="?edit_id=<?php echo $row['id']; ?>">Editar</a>
-                        <a href="?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
-                    </td>
-                </tr>
-                <?php endwhile; ?>
-            </tbody>
-        </table>
+                            ?>
+                        </td>
+                        <td><?php echo $row['fornecedor_nome']; ?></td>
+                        <td>
+                            <?php if ($row['imagem']): ?>
+                                <img src="<?php echo $row['imagem']; ?>" alt="Imagem do produto" class="thumbnail">
+                            <?php else: ?>
+                                Sem imagem
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <a href="?edit_id=<?php echo $row['id']; ?>">Editar</a>
+                            <a href="?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                        </td>
+                    </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+        </div>
         <a href="index.php" class="back-button">Voltar</a>
     </div>
 </body>

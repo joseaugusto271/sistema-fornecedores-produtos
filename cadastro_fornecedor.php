@@ -144,7 +144,7 @@ if (isset($_GET['edit_id'])) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container" style="max-width: 900px;">
+    <div class="container">
         <h2>Cadastro de Fornecedor</h2>
         <!-- Formulário para cadastro/edição de fornecedor -->
         <form method="post" action="" enctype="multipart/form-data">
@@ -176,38 +176,38 @@ if (isset($_GET['edit_id'])) {
 
         <h2>Listagem de Fornecedores</h2>
         <!-- Tabela para listar os fornecedores cadastrados -->
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Email</th>
-                <th>Telefone</th>
-                <th>Imagem</th>
-                <th>Ações</th>
-            </tr>
-            <?php while ($row = $fornecedores->fetch_assoc()): ?>
-            <tr>
-                <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['nome']; ?></td>
-                <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['telefone']; ?></td>
-                <td>
-                    <?php if ($row['imagem']): ?>
-                        <img src="<?php echo $row['imagem']; ?>" alt="Imagem do fornecedor" class="thumbnail">
-                    <?php else: ?>
-                        Sem imagem
-                    <?php endif; ?>
-                </td>
-                <td>
-                    <a href="?edit_id=<?php echo $row['id']; ?>">Editar</a>
-                    <a href="?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
-                </td>
-            </tr>
-            <?php endwhile; ?>
-        </table>
-        <div class="actions">
-          <a href="index.php" class="back-button">Voltar</a>
+        <div class="scroll">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Imagem</th>
+                    <th>Ações</th>
+                </tr>
+                <?php while ($row = $fornecedores->fetch_assoc()): ?>
+                <tr>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['nome']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['telefone']; ?></td>
+                    <td>
+                        <?php if ($row['imagem']): ?>
+                            <img src="<?php echo $row['imagem']; ?>" alt="Imagem do fornecedor" class="thumbnail">
+                        <?php else: ?>
+                            Sem imagem
+                        <?php endif; ?>
+                    </td>
+                    <td>
+                        <a href="?edit_id=<?php echo $row['id']; ?>">Editar</a>
+                        <a href="?delete_id=<?php echo $row['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            </table>
         </div>
+          <a href="index.php" class="back-button">Voltar</a>
     </div>
 </body>
 </html>
