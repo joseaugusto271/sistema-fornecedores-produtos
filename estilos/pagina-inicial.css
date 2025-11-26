@@ -25,9 +25,10 @@ body {
 
 header {
     padding: 15px;
-    background-color: rgba(255, 255, 255, 0.5);
+    /* background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); */
+    background-color: #1262AF;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -38,13 +39,12 @@ header {
     opacity: 100%;
     height: 120px;
     width: 120px;
-    background-color: #008A99;
+    background-color: #105596;
     border-radius: 100%;
 }
 
-nav {
-    border: 2px dotted red;
-    width: 465px;
+.menu {
+    min-width: 465px;
 }
 
 .menu ul {
@@ -53,14 +53,15 @@ nav {
     gap: 25px;
 }
 
-.menu li { 
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) 0%, rgba(0, 138, 153, 0.5) 70%);
+.menu a { 
+    font-size: 24px;
     padding: 10px;
     border-radius: 10px;
 }
 
-.menu li:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+.menu a:hover {
+    background-color: rgb(255, 255, 255);
+    color: #1262AF;
     transform: translate(-2px, -2px);
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.15);
     transition: 0.2s;
@@ -68,8 +69,9 @@ nav {
 
 .menu a {
     text-decoration: none;
-    color: #002F87;
+    color: white;
     font-weight: bold;
+    font-family: Aleo;
 }
 
 /* Fundo do site com gradiente */
@@ -99,7 +101,7 @@ main {
 }
 
 .templo-do-sol {
-    max-width: 600px;
+    max-width: 800px;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeUp 1.2s ease forwards;
@@ -201,35 +203,35 @@ main {
 }
 
 .card-imagem {
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
     margin: 15px 0 0 15px;
 }
 
 .tobogas {
-    height: 440px;
-    width: 430px;
+    height: 340px;
+    width: 330px;
     background-image: linear-gradient(135deg, #874BFF, #0260CB);
     border-radius: 70px;
     padding: 20px;
 }
 .piscinas {
-    height: 440px;
-    width: 430px;
+    height: 340px;
+    width: 330px;
     background-image: linear-gradient(135deg, #0051FF, #0099FF);
     border-radius: 70px;
     padding: 20px;
 }
 .rio {
-    height: 440px;
-    width: 430px;
+    height: 340px;
+    width: 330px;
     background-image: linear-gradient(135deg, #00E99C, #007283);
     border-radius: 70px;
     padding: 20px;
 }
 .infantil {
-    height: 440px;
-    width: 430px;
+    height: 340px;
+    width: 330px;
     background-image: linear-gradient(135deg, #FF7700, #FF7F81);
     border-radius: 70px;
     padding: 20px;
@@ -244,9 +246,166 @@ main {
 }
 
 .conteudo-card > h3 {
-    font-size: 36px;
+    font-size: 30px;
 }
 
 .conteudo-card > p {
-    font-size: 30px;
+    font-size: 22px;
+}
+
+/* Sessão ingresso */
+
+.ingressos {
+    margin-top: 50px;
+}
+
+.ingressos > h1, .ingressos > p {
+    text-align: center;
+    color: #002F87;
+    font-family: Abeezee;
+    font-weight: 400;
+}
+
+.ingressos > h1 {
+    font-size: 90px;
+}
+
+.ingressos > p {
+    font-size: 25px;
+}
+
+/* Layout */
+
+.planos {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* Estilo geral */
+
+.ingresso-card {
+    width: 430px;
+    height: 540px;
+    background: white;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    overflow: hidden;
+    border: 0.5px solid #FFBB00;;
+    position: relative;
+}
+
+/* headers dos cards */
+
+.azul .ingresso-header {
+    background-image: linear-gradient(135deg, #0051FF, #0099FF);
+    color: white;
+}
+
+.verde .ingresso-header {
+    background-image: linear-gradient(135deg, #00E99C, #007283);
+    color: white;
+}
+
+.laranja .ingresso-header {
+    background-image: linear-gradient(135deg, #FF7700, #FF7F81);
+    color: white;
+}
+
+.ingresso-header {
+    padding: 20px;
+    text-align: left;
+}
+
+.ingresso-header h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.preco {
+    font-size: 34px;
+}
+
+.preco span {
+    font-size: 58px;
+}
+
+/* Lista de benefícios */
+.beneficios {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+}
+
+.beneficios li {
+    margin: 8px;
+    position: relative;
+    padding: 20px;
+    font-size: 18px;
+}
+
+/* Icone ✔ */
+
+.beneficios li::before {
+    content: "✔";
+    color: #0c9c32;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Botão */
+
+.comprar, .popular-comprar {
+    display: block;
+    width: 85%;
+    margin: 20px auto 25px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Cores dos botões */
+
+.comprar {
+    color: white;
+    background-image: linear-gradient(to right, #00A6FF, #00B28E, #009970);
+}
+
+.comprar:hover {
+    color: white;
+    background-image: linear-gradient(to right, #0080c5, #00775f, #00664b);
+}
+
+.popular-comprar {
+    color: white;
+    background-color: #FFCC00;
+}
+
+.popular-comprar:hover {
+    color: white;
+    background-color: #c09a00;
+}
+
+/* Card popular destacado */
+
+.popular {
+    border: 2px solid #ffd600;
+}
+
+.tag {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #ffd600;
+    padding: 5px 12px;
+    font-weight: bold;
+    border-radius: 0 0 0 20px;
+    font-size: 13px;
 }
