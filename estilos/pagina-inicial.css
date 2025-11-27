@@ -77,7 +77,7 @@ header {
 /* Fundo do site com gradiente */
 
 main {
-    background-image: linear-gradient(to bottom, white, #005B67);
+    background-image: linear-gradient(to bottom, white 70%, #005B67 100%);
 }
 
 /* Seção de destaque */
@@ -163,7 +163,7 @@ main {
 /* Espaçamento entre a seção anterior */
 
 .atracoes {
-    margin-top: 50px;
+    margin-top: 200px;
 }
 
 /* Estilização do texto principal */
@@ -245,18 +245,18 @@ main {
     color: white;
 }
 
-.conteudo-card > h3 {
+.conteudo-card h3 {
     font-size: 30px;
 }
 
-.conteudo-card > p {
+.conteudo-card p {
     font-size: 22px;
 }
 
 /* Sessão ingresso */
 
 .ingressos {
-    margin-top: 50px;
+    margin-top: 200px;
 }
 
 .ingressos > h1, .ingressos > p {
@@ -408,4 +408,115 @@ main {
     font-weight: bold;
     border-radius: 0 0 0 20px;
     font-size: 13px;
+}
+
+/* Seção de informações */
+
+.info {
+    margin-top: 500px;
+}
+
+.info > h1, .info > p {
+    text-align: center;
+    color: #002F87;
+    font-family: Abeezee;
+    font-weight: 400;
+}
+
+.info > h1 {
+    font-size: 90px;
+}
+
+.info > p {
+    font-size: 25px;
+}
+
+.info-card, .container-regras {
+}
+
+/* Cards */
+
+.info-cards {
+    margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: row wrap;
+    gap: 25px;
+}
+
+/* Card individual */
+
+.info-card {
+    width: 340px;
+    height: 330px;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) , rgba(0, 138, 153, 0.5));
+    padding: 25px 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: 0.3s ease;
+}
+
+.info-card h3 {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: Abeezee;
+    color: #003b49;
+    margin-bottom: 8px;
+}
+
+.info-card p, .info-card address {
+    color: #004859;
+    font-size: 22px;
+    font-family: Abeezee;
+}
+
+/* Regras */
+
+.container-regras {
+    width: 85%;
+    margin: 50px auto 0;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 138, 153, 0.5));
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.container-regras h3 {
+    color: #004859;
+    font-size: 30px;
+    font-family: Abeezee;
+    margin-bottom: 30px;
+}
+
+/* Lista personalizada com flexbox */
+.regras {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.regras li {
+    font-family: Abeezee;
+    font-size: 18px;
+    color: #004859;
+    width: 48%;
+    margin: 10px 0;
+}
+
+/* Bolinha amarela */
+
+.regras li::before {
+    content: "•";
+    font-size: 22px;
+    color: #ffd600;
 }
