@@ -28,7 +28,9 @@ header {
     /* background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px); */
-    background-color: #1262AF;
+    /* background-color: #1262AF; */
+    background-image: linear-gradient(to right, #1262AF, #1883e8);
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -78,6 +80,7 @@ header {
 
 main {
     background-image: linear-gradient(to bottom, white 70%, #005B67 100%);
+    padding-bottom: 10px;
 }
 
 /* Seção de destaque */
@@ -208,33 +211,30 @@ main {
     margin: 15px 0 0 15px;
 }
 
-.tobogas {
+.atracao-card {
     height: 340px;
     width: 330px;
-    background-image: linear-gradient(135deg, #874BFF, #0260CB);
     border-radius: 70px;
     padding: 20px;
+    transition: 0.2s ease;
+}
+
+.atracao-card:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.tobogas {
+    background-image: linear-gradient(135deg, #874BFF, #0260CB);
 }
 .piscinas {
-    height: 340px;
-    width: 330px;
     background-image: linear-gradient(135deg, #0051FF, #0099FF);
-    border-radius: 70px;
-    padding: 20px;
 }
 .rio {
-    height: 340px;
-    width: 330px;
     background-image: linear-gradient(135deg, #00E99C, #007283);
-    border-radius: 70px;
-    padding: 20px;
 }
 .infantil {
-    height: 340px;
-    width: 330px;
     background-image: linear-gradient(135deg, #FF7700, #FF7F81);
-    border-radius: 70px;
-    padding: 20px;
 }
 
 .conteudo-card {
@@ -431,9 +431,6 @@ main {
     font-size: 25px;
 }
 
-.info-card, .container-regras {
-}
-
 /* Cards */
 
 .info-cards {
@@ -451,8 +448,8 @@ main {
 /* Card individual */
 
 .info-card {
-    width: 340px;
-    height: 330px;
+    width: 300px;
+    height: 290px;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5) , rgba(0, 138, 153, 0.5));
     padding: 25px 25px;
     border-radius: 12px;
@@ -480,7 +477,9 @@ main {
 
 .container-regras {
     width: 85%;
-    margin: 50px auto 0;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 138, 153, 0.5));
     padding: 30px;
     border-radius: 12px;
@@ -519,4 +518,307 @@ main {
     content: "•";
     font-size: 22px;
     color: #ffd600;
+}
+
+/* Footer */
+
+footer {
+    background-color: #025B78;
+    padding: 50px 0 20px;
+    color: white;
+    font-family: Abeezee;
+}
+
+/* Container */
+
+.footer-container {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Colunas */
+
+.coluna {
+    min-width: 150px;
+}
+
+.coluna > p {
+    max-width: 220px;
+    font-size: 14px;
+    line-height: 1.4em;
+    opacity: 0.9;
+    font-weight: bold;
+    text-decoration: underline;
+    text-indent: 5px;
+}
+
+.coluna > .logo-principal {
+    background-color: transparent;
+}
+
+/* Título das colunas */
+
+.coluna h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Lista de links */
+
+.coluna ul {
+    list-style: none;
+    padding: 0;
+}
+
+.coluna ul li {
+    margin-bottom: 10px;
+
+}
+.coluna ul li a {
+    color: white;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: 0.2s;
+}
+
+.coluna ul li a:hover {
+    opacity: 1;
+}
+
+/* Ícones de redes sociais */
+
+.social a img {
+    width: 28px;
+    margin-right: 12px;
+    transition: 0.2s ease;
+}
+
+.social a img:hover {
+    transform: scale(1.1);
+}
+
+/* Linha separadora */
+
+.linha {
+    margin-top: 5px;
+    width: 100%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Copyright */
+
+.copyright {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+@media (max-width: 800px) {
+
+    /*  Menu */
+
+    .menu a{
+        font-size: 22px;
+    }
+
+    /* Destaque */
+
+    .conteudo-destaque p{
+        font-size: 18px;
+    }
+
+    .templo-do-sol {
+        max-width: 500px;
+    }
+
+    /* Atrações */
+
+    .atracoes h1 {
+        font-size: 70px;
+    }
+
+    .atracoes > p {
+        font-size: 20px;
+    }
+
+    /* Ingressos */
+
+    .ingressos h1{
+        font-size: 70px;
+    }
+
+    .ingressos > p{
+        font-size: 20px;
+    }
+
+    /* Informações */
+
+    .info h1 {
+        font-size: 70px;
+    }
+
+    .info > p {
+        font-size: 20px;
+    }
+
+    .footer-container {
+        text-align: center;
+        flex-wrap: wrap;
+    }
+
+    .coluna {
+        flex: 1 1 100%;
+    }
+
+    .coluna > p {
+        margin: 0 auto;
+        text-indent: none;
+    }
+
+    .social {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 620px) {
+
+    /* Header */
+
+    header, .menu > ul{
+        flex-direction: column;
+    }
+
+    .menu {
+        width: 100%;
+    }
+
+    .menu > ul {
+        margin-top: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu a {
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .logo-principal {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* Destaque */
+
+    .templo-do-sol {
+        width: 400px;
+    }
+
+    .conteudo-destaque p {
+        font-size: 16px;
+    }
+
+    .botao {
+        font-size: 15px;
+    }
+
+    .atracoes h1{
+        font-size: 50px;
+    }
+
+    .atracoes > p {
+        font-size: 17px;
+    }
+
+    .tobogas, .piscinas, .rio, .infantil {
+        width: 250px;
+        height: 240px;
+    }
+
+    .conteudo-card h3{
+        font-size: 24px;
+    }
+
+    .conteudo-card p {
+        font-size: 16px;
+    }
+
+    .card-imagem {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Seção ingressos */
+
+    .ingressos h1 {
+        font-size: 50px;
+    }
+
+    .ingressos > p {
+        font-size: 17px;
+    }
+
+    .ingresso-card {
+        width: 380px;
+        height: 500px;
+    }
+
+    .ingresso-header h3 {
+        font-size: 25px;
+    }
+
+    .preco {
+        font-size: 26px;
+    }
+
+    .preco span {
+        font-size: 46px;
+    }
+
+    .beneficios li {
+        font-size: 14px;
+    }
+
+    /* Informações */
+
+    .info h1 {
+        font-size: 50px;
+    }
+
+    .info > p {
+        font-size: 17px;
+    }
+
+    .info-card {
+        width: 220px;
+        height: 210px;
+    }
+
+    .icon {
+        width: 50px;
+    }
+
+    .conteudo-card h3 {
+        font-size: 20px;
+    }
+
+    .conteudo-card p, .conteudo-card address {
+        font-size: 16px;
+    }
+
+    /* Regras */
+
+    .container-regras h3 {
+        font-size: 20px;
+    }
+
+    .regras li {
+        font-size: 16px;
+    }
 }

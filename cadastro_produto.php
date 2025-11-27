@@ -202,7 +202,7 @@ $fornecedores = $conn->query("SELECT id, nome FROM fornecedores");
             </select>
 
             <label for="validade">Data de validade:</label>
-            <input type="date" name="validade" value="<?php echo $validade['preco'] ?? ''; ?>" required>
+            <input type="date" name="validade" value="<?php echo $validade['validade'] ?? ''; ?>" required>
             
             <label for="imagem">Imagem:</label>
             <input type="file" name="imagem" accept="image/*">
