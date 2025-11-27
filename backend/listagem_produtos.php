@@ -20,7 +20,7 @@ $produtos = $conn->query("SELECT p.id, p.nome, p.descricao, p.preco, p.tipo, p.v
 <head>
     <meta charset="UTF-8">
     <title>Listagem de Produtos</title>
-    <link rel="stylesheet" href="estilos/styles.css">
+    <link rel="stylesheet" href="../estilos/styles.css">
 </head>
 <body>
     <div class="container">
