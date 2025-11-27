@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
 CREATE TABLE IF NOT EXISTS fornecedores (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
-    email VARCHAR(100),
-    telefone VARCHAR(20)
+    email VARCHAR(100) NOT NULL,
+    telefone VARCHAR(20) NOT NULL
 );
 
 -- Expressão SQL para criar a tabela de produtos relacionada via FK com a tabela de fornecedores
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS produtos (
     fornecedor_id INT,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT,
-    preco DECIMAL(10, 2),
+    preco DECIMAL(10, 2) NOT NULL,
     tipo ENUM ('Manutenção', 'Alimentação', 'Loja', 'Segurança', 'Serviço') NOT NULL,
     validade DATE NOT NULL,
     FOREIGN KEY (fornecedor_id) REFERENCES fornecedores(id)
