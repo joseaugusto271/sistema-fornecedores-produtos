@@ -141,7 +141,7 @@ if (isset($_GET['edit_id'])) {
 <head>
     <meta charset="UTF-8">
     <title>Cadastro de Fornecedor</title>
-    <link rel="stylesheet" href="../estilos/styles.css">
+    <link rel="stylesheet" href="estilos/styles.css">
 </head>
 <body>
     <div class="container">
