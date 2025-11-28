@@ -38,11 +38,8 @@ header {
 }
 
 .logo-principal {
-    opacity: 100%;
     height: 120px;
     width: 120px;
-    background-color: #105596;
-    border-radius: 100%;
 }
 
 .menu {
